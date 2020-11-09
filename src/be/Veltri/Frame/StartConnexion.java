@@ -1,12 +1,18 @@
 package be.Veltri.Frame;
 
 import java.awt.BorderLayout;
+
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import be.Veltri.DAO.*;
+import be.Veltri.POJO.User;
+
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.SwingConstants;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -77,6 +83,18 @@ public class StartConnexion extends JFrame {
 		contentPane.add(textField_pwd);
 		
 		JButton btn_connexion = new JButton("CONNEXION");
+		btn_connexion.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				DAO<User> userDao = new UserDAO(Connexion.getInstance());
+				User user = new User ();
+				user = userDao.find(textField_email.getText(), textField_pwd.getText());
+				if(user.getClass().getSimpleName().equals("User"))
+					JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe incorrecte");
+				else
+					JOptionPane.showMessageDialog(null, "Connexion réussie");
+					
+			}
+		});
 		btn_connexion.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		btn_connexion.setBounds(261, 283, 181, 27);
 		contentPane.add(btn_connexion);
@@ -84,7 +102,7 @@ public class StartConnexion extends JFrame {
 		JButton btn_inscription = new JButton("INSCRIPTION");
 		btn_inscription.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				frame.setVisible(false);
+				frame.dispose();
 				Inscription inscri = new Inscription();
 				inscri.setVisible(true);
 			}

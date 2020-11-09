@@ -6,6 +6,13 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
+import be.Veltri.DAO.Connexion;
+import be.Veltri.DAO.DAO;
+import be.Veltri.DAO.UserDAO;
+import be.Veltri.POJO.Client;
+import be.Veltri.POJO.User;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.SwingConstants;
@@ -36,7 +43,7 @@ public class Inscription extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Inscription frame = new Inscription();
+					StartConnexion frame = new StartConnexion();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -164,9 +171,26 @@ public class Inscription extends JFrame {
 		JButton btn_inscription = new JButton("INSCRIPTION");
 		btn_inscription.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				DAO<User> userDao = new UserDAO(Connexion.getInstance());
+				if (cb_discri.getSelectedItem().toString().equals("Client")) {
+					User user = new Client(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
+							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
+							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
+					userDao.create(user);
+				} else if (cb_discri.getSelectedItem().toString().equals("Organisateur")) {
+					User user = new Client(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
+							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
+							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
+					userDao.create(user);
+				} else if (cb_discri.getSelectedItem().toString().equals("Artiste")) {
+					User user = new Client(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
+							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
+							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
+					userDao.create(user);
+				}
 				frame.setVisible(false);
-				StartConnexion inscri = new StartConnexion();
-				inscri.setVisible(true);
+				StartConnexion home = new StartConnexion();
+				home.setVisible(true);
 			}
 		});
 		btn_inscription.setFont(new Font("Times New Roman", Font.PLAIN, 15));

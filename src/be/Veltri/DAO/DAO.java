@@ -15,5 +15,6 @@ protected Connection connect = null;
 	
 	public abstract boolean update(T obj);
 	
-	public abstract T find(int id);
+	public abstract T find(String string, String string2);
+	
 }

@@ -2,22 +2,23 @@ package be.Veltri.POJO;
 
 import java.io.Serializable;
 
-public class Place implements Serializable{
+public class Place implements Serializable {
 	private static final long serialVersionUID = 4677653132418229865L;
 	private int id;
 	private String nom;
 	private float prix;
 	private Representation representation;
-	
-	// Constructeurs 
+
+	// Constructeurs
 	public Place(int id, String nom, float prix, Representation representation) {
 		this.id = id;
 		this.nom = nom;
 		this.prix = prix;
 		this.representation = representation;
 	}
-	
-	public Place () {}
+
+	public Place() {
+	}
 
 	// Accesseurs
 	public int getId() {
@@ -33,7 +34,7 @@ public class Place implements Serializable{
 	}
 
 	public void setNom(String nom) {
-		nom = nom;
+		this.nom = nom;
 	}
 
 	public float getPrix() {
@@ -52,5 +53,4 @@ public class Place implements Serializable{
 		this.representation = representation;
 	}
 
-	
 }
