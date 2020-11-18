@@ -8,15 +8,14 @@ public class Spectacle implements Serializable {
 	private int id;
 	private String titre;
 	private int nbrplacemax;
-	private PlanningSalle planningsalle;
-	private Set<User> listartistes = new HashSet<>();
+	private Set<User> listeArtistes = new HashSet<>();
+	private Set<Configuration> listConfiguration = new HashSet<>();
 
 	// Constructeurs
-	public Spectacle(int id, String titre, int nbrplacemax, PlanningSalle planningsalle, User user) {
+	public Spectacle(int id, String titre, int nbrplacemax) {
 		this.id = id;
 		this.titre = titre;
 		this.nbrplacemax = nbrplacemax;
-		this.planningsalle = planningsalle;
 	}
 
 	public Spectacle() {
@@ -46,21 +45,36 @@ public class Spectacle implements Serializable {
 	public void setNbrplacemax(int nbrplacemax) {
 		this.nbrplacemax = nbrplacemax;
 	}
-
-	public PlanningSalle getPlanningsalle() {
-		return planningsalle;
-	}
-
-	public void setPlanningsalle(PlanningSalle planningsalle) {
-		this.planningsalle = planningsalle;
-	}
-
+	
 	public Set<User> getListartistes() {
-		return listartistes;
+		return listeArtistes;
 	}
 
 	public void setListartistes(Set<User> listartistes) {
-		this.listartistes = listartistes;
+		this.listeArtistes = listartistes;
 	}
+
+	public Set<Configuration> getListConfiguration() {
+		return listConfiguration;
+	}
+
+	public void setListConfiguration(Set<Configuration> listConfiguration) {
+		this.listConfiguration = listConfiguration;
+	}
+	
+	public void addArtiste(User artiste){
+		this.listeArtistes.add(artiste);
+	}
+	public void removeArtiste(User artiste){
+		this.listeArtistes.remove(artiste);
+	}
+
+	public void addConfiguration(Configuration configuration){
+		this.listConfiguration.add(configuration);
+	}
+	public void removeConfiguration(Configuration configuration){
+		this.listConfiguration.remove(configuration);
+	}
+
 
 }

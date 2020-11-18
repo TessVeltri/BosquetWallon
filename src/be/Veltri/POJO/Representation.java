@@ -2,20 +2,21 @@ package be.Veltri.POJO;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Representation implements Serializable {
 	private static final long serialVersionUID = 5775215245470179538L;
 	private int id;
 	private Date datedebut;
 	private Date datefin;
-	private Spectacle spectacle;
+	private Set<Spectacle> listeSpectacle = new HashSet<>();
 
 	// Constructeurs
-	public Representation(int id, Date datedebut, Date datefin, Spectacle spectacle) {
+	public Representation(int id, Date datedebut, Date datefin) {
 		this.id = id;
 		this.datedebut = datedebut;
 		this.datefin = datefin;
-		this.spectacle = spectacle;
 	}
 
 	public Representation() {
@@ -46,12 +47,20 @@ public class Representation implements Serializable {
 		this.datefin = datefin;
 	}
 
-	public Spectacle getSpectacle() {
-		return spectacle;
+	public Set<Spectacle> getListeSpectacle() {
+		return listeSpectacle;
 	}
 
-	public void setSpectacle(Spectacle spectacle) {
-		this.spectacle = spectacle;
+	public void setListeSpectacle(Set<Spectacle> listeSpectacle) {
+		this.listeSpectacle = listeSpectacle;
+	}
+
+	public void addSpectacle(Spectacle spectacle) {
+		this.listeSpectacle.add(spectacle);
+	}
+
+	public void removeSpectacle(Spectacle spectacle) {
+		this.listeSpectacle.remove(spectacle);
 	}
 
 }

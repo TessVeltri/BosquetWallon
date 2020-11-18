@@ -6,17 +6,15 @@ public class Categorie implements Serializable{
 	private static final long serialVersionUID = 461917675324325531L;
 	private int id;
 	private String type;
-	private float pri;
+	private float prix;
 	private int nbrmaxplace;
-	private Configuration configuration;
 	
 	// Constructeurs
-	public Categorie(int id, String type, float pri, int nbrmaxplace, Configuration configuration) {
+	public Categorie(int id, String type, float prix, int nbrmaxplace) {
 		this.id = id;
 		this.type = type;
-		this.pri = pri;
+		this.prix = prix;
 		this.nbrmaxplace = nbrmaxplace;
-		this.configuration = configuration;
 	}
 	public Categorie () {}
 	
@@ -33,25 +31,17 @@ public class Categorie implements Serializable{
 	public void setType(String type) {
 		this.type = type;
 	}
-	public float getPri() {
-		return pri;
+	public float getPrix() {
+		return prix;
 	}
-	public void setPri(float pri) {
-		this.pri = pri;
+	public void setPrix(float prix) {
+		this.prix = prix;
 	}
 	public int getNbrmaxplace() {
 		return nbrmaxplace;
 	}
 	public void setNbrmaxplace(int nbrmaxplace) {
 		this.nbrmaxplace = nbrmaxplace;
-	}
-	public Configuration getConfiguration() {
-		return configuration;
-	}
-	public void setConfiguration(Configuration configuration) {
-		this.configuration = configuration;
-	}
-	
-	
+	}	
 	
 }

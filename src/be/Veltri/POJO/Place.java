@@ -1,20 +1,21 @@
 package be.Veltri.POJO;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Place implements Serializable {
 	private static final long serialVersionUID = 4677653132418229865L;
 	private int id;
 	private String nom;
 	private float prix;
-	private Representation representation;
+	private Set<Representation> listeRepresentation = new HashSet<>();
 
 	// Constructeurs
-	public Place(int id, String nom, float prix, Representation representation) {
+	public Place(int id, String nom, float prix) {
 		this.id = id;
 		this.nom = nom;
 		this.prix = prix;
-		this.representation = representation;
 	}
 
 	public Place() {
@@ -45,12 +46,19 @@ public class Place implements Serializable {
 		this.prix = prix;
 	}
 
-	public Representation getRepresentation() {
-		return representation;
+	public Set<Representation> getListeRepresentation() {
+		return listeRepresentation;
 	}
 
-	public void setRepresentation(Representation representation) {
-		this.representation = representation;
+	public void setListeRepresentation(Set<Representation> listeRepresentation) {
+		this.listeRepresentation = listeRepresentation;
+	}
+	
+	public void addRepresentation(Representation representation){
+		this.listeRepresentation.add(representation);
+	}
+	public void removeRepresentation(Representation representation){
+		this.listeRepresentation.remove(representation);
 	}
 
 }

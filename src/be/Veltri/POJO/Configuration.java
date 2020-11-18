@@ -1,21 +1,21 @@
 package be.Veltri.POJO;
 
 import java.io.Serializable;
+import java.util.*;
 
 public class Configuration implements Serializable{
 	private static final long serialVersionUID = 8948096733066571484L;
 	private int id;
 	private String type;
 	private String description;
-	private Spectacle spectacle;
+	private Set<Categorie> listeCategorie = new HashSet<>();
 	
 	// Constructeurs
-	public Configuration(int id, String type, String description, Spectacle spectacle) {
+	public Configuration(int id, String type, String description) {
 		super();
 		this.id = id;
 		this.type = type;
 		this.description = description;
-		this.spectacle = spectacle;
 	}
 	public Configuration () {}
 	
@@ -38,13 +38,18 @@ public class Configuration implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public Spectacle getSpectacle() {
-		return spectacle;
+	public Set<Categorie> getListeCategorie() {
+		return listeCategorie;
 	}
-	public void setSpectacle(Spectacle spectacle) {
-		this.spectacle = spectacle;
+	public void setListeCategorie(Set<Categorie> listeCategorie) {
+		this.listeCategorie = listeCategorie;
+	}	
+	public void addCategorie(Categorie categorie){
+		listeCategorie.add(categorie);
 	}
-	
-	
+	public void removeCategorie(Categorie categorie){
+		this.listeCategorie.remove(categorie);
+	}
+
 	
 }

@@ -2,20 +2,21 @@ package be.Veltri.POJO;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 public class PlanningSalle implements Serializable {
 	private static final long serialVersionUID = 2875279716052761652L;
 	private int id;
 	private Date datedebut;
 	private Date datefin;
-	private User user;
+	private Set<Spectacle> listeSpectacle = new HashSet<>();
 
 	// Constructeur
-	public PlanningSalle(int id, Date datedebut, Date datefin, User user) {
+	public PlanningSalle(int id, Date datedebut, Date datefin) {
 		this.id = id;
 		this.datedebut = datedebut;
 		this.datefin = datefin;
-		this.user = user;
 	}
 
 	public PlanningSalle() {
@@ -46,12 +47,20 @@ public class PlanningSalle implements Serializable {
 		this.datefin = datefin;
 	}
 
-	public User getUser() {
-		return user;
+	public Set<Spectacle> getListeSpectacle() {
+		return listeSpectacle;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setListeSpectacle(Set<Spectacle> listeSpectacle) {
+		this.listeSpectacle = listeSpectacle;
+	}
+
+	public void addSpectacle(Spectacle spectacle) {
+		this.listeSpectacle.add(spectacle);
+	}
+
+	public void removeSpectacle(Spectacle spectacle) {
+		this.listeSpectacle.remove(spectacle);
 	}
 
 }

@@ -1,20 +1,19 @@
 package be.Veltri.POJO;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Reservation implements Serializable{
 	private static final long serialVersionUID = -3363407573648170262L;
 	private int id;
 	private float solde;
-	private PlanningSalle planningsalle;
-	private User user;
+	private Set<PlanningSalle> listPlanningSalle = new HashSet<>();
 	
 	// Constructeur
-	public Reservation(int id, float solde, PlanningSalle planningsalle, User user) {
+	public Reservation(int id, float solde) {
 		this.id = id;
 		this.solde = solde;
-		this.planningsalle = planningsalle;
-		this.user = user;
 	}
 	
 	public Reservation() {}
@@ -36,21 +35,18 @@ public class Reservation implements Serializable{
 		this.solde = solde;
 	}
 
-	public PlanningSalle getPlanningsalle() {
-		return planningsalle;
+	public Set<PlanningSalle> getListPlanningSalle() {
+		return listPlanningSalle;
 	}
 
-	public void setPlanningsalle(PlanningSalle planningsalle) {
-		this.planningsalle = planningsalle;
-	}
-
-	public User getUser() {
-		return user;
-	}
-
-	public void setUser(User user) {
-		this.user = user;
+	public void setListPlanningSalle(Set<PlanningSalle> listPlanningSalle) {
+		this.listPlanningSalle = listPlanningSalle;
 	}
 	
-	
+	public void addPlanningSalle(PlanningSalle planningSalle){
+		listPlanningSalle.add(planningSalle);
+	}
+	public void removePlanningSalle(PlanningSalle planningSalle){
+		this.listPlanningSalle.remove(planningSalle);
+	}
 }

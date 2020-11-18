@@ -1,6 +1,8 @@
 package be.Veltri.POJO;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Commande implements Serializable{
 	private static final long serialVersionUID = -4937045767436114258L;
@@ -9,6 +11,7 @@ public class Commande implements Serializable{
 	private String modelivraison;
 	private String modepaiement;
 	private float totalcommande;
+	private Set<Place> listePlace= new HashSet<>();
 	
 	// Constructeur
 	public Commande(int id, User user, String modelivraison, String modepaiement, float totalcommande) {
@@ -51,6 +54,19 @@ public class Commande implements Serializable{
 	public void setTotalcommande(float totalcommande) {
 		this.totalcommande = totalcommande;
 	}
+	public Set<Place> getListePlace() {
+		return listePlace;
+	}
+	public void setListePlace(Set<Place> listePlace) {
+		this.listePlace = listePlace;
+	}
+	public void addPlace(Place place){
+		this.listePlace.add(place);
+	}
+	public void removePlace(Place place){
+		this.listePlace.remove(place);
+	}
+
 	
 	
 	
