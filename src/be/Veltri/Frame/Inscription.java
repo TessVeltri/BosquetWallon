@@ -10,7 +10,9 @@ import javax.swing.border.EmptyBorder;
 import be.Veltri.DAO.Connexion;
 import be.Veltri.DAO.DAO;
 import be.Veltri.DAO.UserDAO;
+import be.Veltri.POJO.Artistes;
 import be.Veltri.POJO.Client;
+import be.Veltri.POJO.Organisateur;
 import be.Veltri.POJO.User;
 
 import javax.swing.JLabel;
@@ -178,12 +180,12 @@ public class Inscription extends JFrame {
 							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
 					userDao.create(user);
 				} else if (cb_discri.getSelectedItem().toString().equals("Organisateur")) {
-					User user = new Client(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
+					User user = new Organisateur(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
 							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
 							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
 					userDao.create(user);
 				} else if (cb_discri.getSelectedItem().toString().equals("Artiste")) {
-					User user = new Client(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
+					User user = new Artistes(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
 							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
 							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
 					userDao.create(user);
