@@ -11,5 +11,6 @@
 	<classpathentry kind="lib" path="C:/dev/java/eclipse-2020.09/workspace/BosquetWallon_Veltri_Tess/hsqldb.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/eclipse-2020.09/workspace/BosquetWallon_Veltri_Tess/jackcess-2.1.11.jar"/>
 	<classpathentry kind="lib" path="C:/dev/java/eclipse-2020.09/workspace/BosquetWallon_Veltri_Tess/ucanaccess-4.0.4.jar"/>
+	<classpathentry kind="lib" path="C:/dev/java/eclipse-2020.09/workspace/BosquetWallon_Veltri_Tess/jcalendar-1.4.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

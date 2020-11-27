@@ -19,13 +19,14 @@ import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class StartConnexion extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField_email;
-	private JTextField textField_pwd;
 	private JFrame frame = this;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -76,23 +77,25 @@ public class StartConnexion extends JFrame {
 		contentPane.add(textField_email);
 		textField_email.setColumns(10);
 		
-		textField_pwd = new JTextField();
-		textField_pwd.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		textField_pwd.setColumns(10);
-		textField_pwd.setBounds(308, 201, 211, 27);
-		contentPane.add(textField_pwd);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(308, 202, 212, 27);
+		contentPane.add(passwordField);
 		
 		JButton btn_connexion = new JButton("CONNEXION");
 		btn_connexion.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DAO<User> userDao = new UserDAO(Connexion.getInstance());
 				User user = new User ();
-				user = userDao.find(textField_email.getText(), textField_pwd.getText());
-				if(user.getClass().getSimpleName().equals("User"))
+				String password = String.valueOf(passwordField.getPassword());
+				user = userDao.find(textField_email.getText(), password);
+				if(user.getClass().getSimpleName().equals("User")) {
 					JOptionPane.showMessageDialog(null, "Identifiant ou mot de passe incorrecte");
-				else
-					JOptionPane.showMessageDialog(null, "Connexion réussie");
-					
+				}
+				else {
+					frame.dispose();
+					Menu menu = new Menu(user);
+					menu.setVisible(true);
+				}
 			}
 		});
 		btn_connexion.setFont(new Font("Times New Roman", Font.PLAIN, 15));
@@ -110,5 +113,7 @@ public class StartConnexion extends JFrame {
 		btn_inscription.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		btn_inscription.setBounds(261, 337, 181, 27);
 		contentPane.add(btn_inscription);
+		
+		
 	}
 }

@@ -24,6 +24,7 @@ import javax.swing.JButton;
 import javax.swing.JComboBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JPasswordField;
 
 public class Inscription extends JFrame {
 
@@ -35,8 +36,8 @@ public class Inscription extends JFrame {
 	private JTextField textField_cp;
 	private JTextField textField_ville;
 	private JTextField textField_email;
-	private JTextField textField_pwd;
 	private JFrame frame = this;
+	private JPasswordField passwordField;
 
 	/**
 	 * Launch the application.
@@ -164,30 +165,29 @@ public class Inscription extends JFrame {
 		lbl_pwd.setBounds(68, 435, 135, 24);
 		contentPane.add(lbl_pwd);
 		
-		textField_pwd = new JTextField();
-		textField_pwd.setFont(new Font("Times New Roman", Font.PLAIN, 15));
-		textField_pwd.setColumns(10);
-		textField_pwd.setBounds(211, 436, 197, 24);
-		contentPane.add(textField_pwd);
+		passwordField = new JPasswordField();
+		passwordField.setBounds(211, 435, 197, 24);
+		contentPane.add(passwordField);
 		
 		JButton btn_inscription = new JButton("INSCRIPTION");
 		btn_inscription.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				DAO<User> userDao = new UserDAO(Connexion.getInstance());
+				String password = String.valueOf(passwordField.getPassword());
 				if (cb_discri.getSelectedItem().toString().equals("Client")) {
 					User user = new Client(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
 							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
-							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
+							textField_ville.getText(), textField_email.getText(), password);
 					userDao.create(user);
 				} else if (cb_discri.getSelectedItem().toString().equals("Organisateur")) {
 					User user = new Organisateur(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
 							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
-							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
+							textField_ville.getText(), textField_email.getText(), password);
 					userDao.create(user);
 				} else if (cb_discri.getSelectedItem().toString().equals("Artiste")) {
 					User user = new Artistes(textField_nom.getText(), textField_prenom.getText(), textField_rue.getText(),
 							Integer.parseInt(textField_num.getText()), Integer.parseInt(textField_cp.getText()),
-							textField_ville.getText(), textField_email.getText(), textField_pwd.getText());
+							textField_ville.getText(), textField_email.getText(), password);
 					userDao.create(user);
 				}
 				frame.setVisible(false);
@@ -198,6 +198,20 @@ public class Inscription extends JFrame {
 		btn_inscription.setFont(new Font("Times New Roman", Font.PLAIN, 15));
 		btn_inscription.setBounds(145, 497, 181, 27);
 		contentPane.add(btn_inscription);
+		
+		JButton btn_retour = new JButton("RETOUR");
+		btn_retour.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				frame.setVisible(false);
+				StartConnexion home = new StartConnexion();
+				home.setVisible(true);
+			}
+		});
+		btn_retour.setFont(new Font("Times New Roman", Font.PLAIN, 11));
+		btn_retour.setBounds(192, 535, 89, 23);
+		contentPane.add(btn_retour);
+		
+		
 		
 		
 	}
