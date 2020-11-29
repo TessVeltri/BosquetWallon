@@ -10,7 +10,7 @@ public class PlanningSalle implements Serializable {
 	private int id;
 	private Date datedebut;
 	private Date datefin;
-	private Set<Spectacle> listeSpectacle = new HashSet<>();
+	private Set<Artistes> listeArtistes = new HashSet<>();
 
 	// Constructeur
 	public PlanningSalle(int id, Date datedebut, Date datefin) {
@@ -47,20 +47,20 @@ public class PlanningSalle implements Serializable {
 		this.datefin = datefin;
 	}
 
-	public Set<Spectacle> getListeSpectacle() {
-		return listeSpectacle;
+	public Set<Artistes> getListeArtistes() {
+		return listeArtistes;
 	}
 
-	public void setListeSpectacle(Set<Spectacle> listeSpectacle) {
-		this.listeSpectacle = listeSpectacle;
+	public void setListeArtistes(Set<Artistes> listeArtistes) {
+		this.listeArtistes = listeArtistes;
 	}
 
-	public void addSpectacle(Spectacle spectacle) {
-		this.listeSpectacle.add(spectacle);
+	public void addArtistes(Artistes artistes) {
+		this.listeArtistes.add(artistes);
 	}
 
-	public void removeSpectacle(Spectacle spectacle) {
-		this.listeSpectacle.remove(spectacle);
+	public void removeArtistes(Artistes artistes) {
+		this.listeArtistes.remove(artistes);
 	}
 
 }
